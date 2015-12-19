@@ -1,0 +1,92 @@
+﻿@using eBay.Service.Core.Soap
+@model IEnumerable<TradeManager.Models.OrderManagementModel>
+
+@{
+    ViewBag.Title = "Selling List";
+    ItemTypeCollection items = (ItemTypeCollection)ViewBag.Items;
+}
+<style>
+    input {
+        border:0;
+    }
+
+</style>
+
+<h2>Selling List</h2>
+<table class="table">
+    
+        
+                    <tr>
+                        <th>
+                            @Html.DisplayName("ID")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Title")
+                        </th>
+                        <th>
+                            @Html.DisplayName("SKU")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Amount")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Category")
+                        </th>
+                        <th>
+                            @Html.DisplayName("StartTime")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Price")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Sold")
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (ItemType item in items)
+                    {
+                        <tr>
+                               
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.ItemID, new {name="ID" })*@
+                                @Html.TextBoxFor(modelItem => item.ItemID, new { @readonly = "true" })
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Title)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SKU)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PrimaryCategory.CategoryName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ListingDetails.StartTime)
+
+                            </td>
+                            <td>
+                                $ @Html.DisplayFor(modelItem => item.SellingStatus
+  .CurrentPrice.Value)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SellingStatus
+  .QuantitySold)
+                            </td>
+                            <td>
+                                @Html.ActionLink("End Item", "EndItem", new { ID=item.ItemID})
+                               
+                            </td>
+                      
+               
+          
+        </tr>
+                    }
+                    
+
+        
+</table>
+<input type="button" value="Back to Inventory" onclick="location.href='@Url.Content("~/InventoryManagement/Index")'" class="btn btn-default" />

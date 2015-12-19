@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "SessionIDPage";
+}
+
+<br /><br />
+<p>If not automatically directed...</p>
+<a href="@ViewBag.SessionURL">Click Here</a>
+
+
+<script language='javascript'>
+    document.location.href = "@Html.Raw(ViewBag.SessionURL)";
+</script>
+
+

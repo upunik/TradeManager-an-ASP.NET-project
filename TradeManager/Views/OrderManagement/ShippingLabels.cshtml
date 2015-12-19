@@ -1,0 +1,73 @@
+﻿@using eBay.Service.Core.Soap
+@{
+    ViewBag.Title = "Shipping Labels";
+}
+
+<h2>Shipping Labels</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Buyer's Name")
+        </th>
+        <th>
+            @Html.DisplayName("Phone")
+        </th>
+        <th>
+            @Html.DisplayName("Street")
+        </th>
+        <th>
+            @Html.DisplayName("Street")
+        </th>
+        <th>
+            @Html.DisplayName("City")
+        </th>
+        <th>
+            @Html.DisplayName("State")
+        </th>
+        <th>
+            @Html.DisplayName("Postal Code")
+        </th>
+        <th>
+            @Html.DisplayName("Reference ID")
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (OrderType Order in ViewBag.ShippingOrders)
+    {
+        foreach (TransactionType Transaction in Order.TransactionArray)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.Street1)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.Street2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.CityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.StateOrProvince)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.PostalCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => Transaction.MultiLegShippingDetails.SellerShipmentToLogisticsProvider.ShipToAddress.ReferenceID)
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+<input type="button" value="Back to Orders" onclick="location.href = '@Url.Content("~/OrderManagement/Index")'" class="btn btn-default" />

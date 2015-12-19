@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TradeManager.Models.MarketResearchModel>
+
+@{
+    ViewBag.Title = "Market Research";
+}
+
+<h2>Market Research</h2>
+
+<p>
+    @Html.ActionLink("Add New Search", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Keyword)
+        </th>
+        <th>
+            @Html.DisplayName("Price From")
+        </th>
+        <th>
+            @Html.DisplayName("Price To")
+        </th>
+        <th>
+            @Html.DisplayName("AveragePrice")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Keyword)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceFrom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceTo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AveragePrice)
+        </td>
+       
+            @{
+    string link = "http://shop.sandbox.ebay.com/i.html?_nkw=" + item.Keyword + "&_mPrRngCbx=1&_udlo=" + item.PriceFrom + "&_udhi=" + item.PriceTo + "&_trksid=p3286.c0.m14&_sop=12&_sc=1";
+                }
+ 
+        <td>
+            <a id=@item.ID href="@link" target="_blank">Open on Ebay</a> |
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Refresh", "Refresh", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

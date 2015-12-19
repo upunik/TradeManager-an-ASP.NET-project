@@ -1,0 +1,192 @@
+﻿@model TradeManager.Models.InventoryManagementModel
+@{
+    ViewBag.Title = "AddToList";
+}
+<style>
+    .fileSelector{
+        margin-top:6px;
+    }
+</style>
+<h2>AddToList</h2>
+
+@using (Html.BeginForm("AddToList", "InventoryManagement", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SKU, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SKU, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SKU, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Category ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("CategoryID", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("CategoryID", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Quantity", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("Quantity", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Quantity", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Price", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("StartPrice", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("StartPrice", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.Label("BuyItNow Price", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("BuyItNowPrice", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("BuyItNowPrice", "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.Label("Description", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("ListingDuration", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="control-label col-md-2">
+                    <option value="3">3 days</option>
+                    <option value="5">5 days</option>
+                    <option value="7">7 days</option>
+                    <option value="10">10 days</option>
+                    <option value="30">30 days</option>
+                    <option value="2147483647">Good 'Til Cancelled</option>
+                </select>
+                    @*Html.DropDownList("ListingDuration", new SelectList(new[] { "Days_3", "Days_5", "Days_7", "Days_10", "Days_30" }), htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    @Html.ValidationMessage("ListingDuration", "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Location (City)", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.Editor("LocationCity", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("LocationCity", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div enctype="multipart/form-data">
+            <div class="form-group">
+                @Html.Label("Pictures", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div id="Pic1" class="col-md-10">
+                    <input type="file" name="pic1" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add1" onclick="document.getElementById('Pic2').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic2" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic2" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add2" onclick="document.getElementById('Pic3').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic3" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic3" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add3" onclick="document.getElementById('Pic4').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic4" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic4" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add4" onclick="document.getElementById('Pic5').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic5" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic5" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add5" onclick="document.getElementById('Pic6').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic6" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic6" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add6" onclick="document.getElementById('Pic7').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic7" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic7" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add7" onclick="document.getElementById('Pic8').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic8" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic8" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add8" onclick="document.getElementById('Pic9').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic9" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic9" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add9" onclick="document.getElementById('Pic10').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic10" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic10" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add10" onclick="document.getElementById('Pic11').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic11" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic11" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                    <a id="Add11" onclick="document.getElementById('Pic12').style.display='block'">Add more</a>
+                </div>
+            </div>
+            <div id="Pic12" class="form-group" style="display:none">
+                @Html.Label(" ", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" name="pic12" accept="image/jpeg, image/x-png, image/tiff, image/x-ms-bmp, image/gif" class="fileSelector">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="checkbox" name="AddPhoto"> Add pictures to my item<br />
+        </div>    
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Add To List" class="btn btn-default" />
+        </div>
+    </div>
+    
+}

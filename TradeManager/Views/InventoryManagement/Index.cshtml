@@ -1,0 +1,65 @@
+﻿@model IEnumerable<TradeManager.Models.InventoryManagementModel>
+
+@{
+    ViewBag.Title = "Inventories";
+}
+
+<h2>Inventories</h2>
+<a href="@Url.Content("~/InventoryManagement/Create")">Create</a>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SKU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayName("Location (in stock)")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StockTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SKU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LocationStock)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StockTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Add To List", "AddToList", new { id = item.ID }) @*|
+            @Html.ActionLink("Refresh", "Refresh", new { id = item.ID })*@
+
+        </td>
+    </tr>
+}
+
+</table>
+<input type="button" value="Selling List" onclick="window.open('@Url.Content("~/InventoryManagement/SellingList")');" class="btn btn-default" />

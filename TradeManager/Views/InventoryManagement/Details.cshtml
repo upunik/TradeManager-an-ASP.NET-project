@@ -1,0 +1,100 @@
+﻿@model TradeManager.Models.InventoryManagementModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>InventoryManagementModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Location (in stock)")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StockTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StockTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayName("Category ID")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Price")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartPrice)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayName("Buy-it-now Price")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BuyItNowPrice)
+        </dd>*@
+
+
+
+        <dt>
+            @Html.DisplayName("Location (City)")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LocationCity)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Setup Your Account";
+}
+
+<br /><br />
+<hr />
+<h2>
+    Step 1: Login with Ebay.
+</h2>
+<div class="form-group">
+    <div class=" col-md-10">
+        <input type="button" value="Click here to login" onclick="window.open('@Url.Content("~/SetupAccount/SessionIDPage")'); document.getElementById('Step2').style.display='block';" class="btn btn-default" />
+    </div>
+</div>
+
+<br />
+<hr />
+<div id="Step2" style="display:none">
+
+    <h2>
+        Step 2: Getting My Authentication Token.
+    </h2>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="button" value="Continue" onclick="javascript:window.open('FetchTokenPage')" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+<br />
+
+
+

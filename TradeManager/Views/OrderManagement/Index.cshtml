@@ -1,0 +1,56 @@
+﻿@using eBay.Service.Core.Soap
+@model IEnumerable<TradeManager.Models.OrderManagementModel>
+
+@{
+    ViewBag.Title = "Order Management";
+    ItemTypeCollection items = (ItemTypeCollection)ViewBag.Items;  
+}
+
+<h2>Order History</h2>
+
+<table class="table">
+    
+    <tr>
+        <th>
+            @Html.DisplayName("Transaction ID")
+        </th>
+        <th>
+            @Html.DisplayName("Title")
+        </th>
+        <th>
+            @Html.DisplayName("Buyer ID")
+        </th>
+        <th>
+            @Html.DisplayName("Transaction Amount")
+        </th>
+        <th>
+            @Html.DisplayName("Checkout Status")
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (OrderType Order in ViewBag.Orders) {
+    foreach(TransactionType Transaction in Order.TransactionArray){
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Order.OrderID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Transaction.Item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Order.BuyerUserID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Order.AmountPaid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Order.CheckoutStatus.Status)
+        </td>   
+    </tr>
+    }
+}
+
+</table>
+<input type="button" value="Shipping Labels" onclick="location.href = '@Url.Content("~/OrderManagement/ShippingLabels")'" class="btn btn-default" />

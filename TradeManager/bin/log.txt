@@ -1,0 +1,59 @@
+[6/30/2015 15:59:26, Informational]
+https://api.sandbox.ebay.com/wsapi?callname=ReviseFixedPriceItem&siteid=0&client=netsoap
+
+[6/30/2015 15:59:27, Informational]
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <soap:Header>
+    <RequesterCredentials xmlns="urn:ebay:apis:eBLBaseComponents">
+      <eBayAuthToken>******</eBayAuthToken>
+    </RequesterCredentials>
+  </soap:Header>
+  <soap:Body>
+    <ReviseFixedPriceItemRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+      <MessageID>8f3d3d4c-33cf-430b-b6c5-7261968e62e3</MessageID>
+      <Version>921</Version>
+      <Item>
+        <SKU>5591</SKU>
+        <ItemSpecifics>
+          <NameValueList>
+            <Name>Brand</Name>
+            <Value>Ralph Lauren</Value>
+          </NameValueList>
+          <NameValueList>
+            <Name>Size</Name>
+            <Value>M</Value>
+          </NameValueList>
+          <NameValueList>
+            <Name>Colour</Name>
+            <Value>Blue</Value>
+          </NameValueList>
+        </ItemSpecifics>
+      </Item>
+    </ReviseFixedPriceItemRequest>
+  </soap:Body>
+</soap:Envelope>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <soapenv:Body>
+    <ReviseFixedPriceItemResponse xmlns="urn:ebay:apis:eBLBaseComponents">
+      <Timestamp>2015-06-30T07:59:22.826Z</Timestamp>
+      <Ack>Failure</Ack>
+      <CorrelationID>8f3d3d4c-33cf-430b-b6c5-7261968e62e3</CorrelationID>
+      <Errors>
+        <ShortMessage>No Matching SKU</ShortMessage>
+        <LongMessage>There is no active item matching the specified SKU</LongMessage>
+        <ErrorCode>21916270</ErrorCode>
+        <SeverityCode>Error</SeverityCode>
+        <ErrorClassification>RequestError</ErrorClassification>
+      </Errors>
+      <Version>899</Version>
+      <Build>E899_UNI_API5_17299296_R1</Build>
+    </ReviseFixedPriceItemResponse>
+  </soapenv:Body>
+</soapenv:Envelope>
+
+[6/30/2015 15:59:27, Error]
+There is no active item matching the specified SKU
+
